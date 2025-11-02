@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Natal 🎄</title>
+  <style>
+    body {
+      background-color: #00111a;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎅 FELIZ NATAL 🎶</h1>
+  <p>A música "Noite Feliz" será tocada automaticamente.</p>
+
+  <audio id="musicaNatal" autoplay loop>
+    <source src="noitefeliz.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+
+  <script>
+    // Tenta tocar automaticamente
+    window.addEventListener("DOMContentLoaded", () => {
+      const musica = document.getElementById("musicaNatal");
+      musica.volume = 0.6;
+      musica.play().catch(() => {
+        // Se o navegador bloquear, toca ao clicar na tela
+        document.body.addEventListener("click", () => musica.play(), { once: true });
+      });
+    });
+  </script>
+</body>
+</html>
+
